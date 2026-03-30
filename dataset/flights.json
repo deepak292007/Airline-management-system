@@ -1,0 +1,1402 @@
+[
+  {
+    "flightNumber": "SSS1001",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-04-02T17:13:51.368Z",
+    "arrivalTime": "2026-04-02T21:13:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 168,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1002",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-17T23:36:51.368Z",
+    "arrivalTime": "2026-03-18T04:36:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 24,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1003",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-20T08:15:51.368Z",
+    "arrivalTime": "2026-03-20T13:15:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 73,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1004",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-24T05:24:51.368Z",
+    "arrivalTime": "2026-03-24T07:24:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 72,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1005",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-04-07T08:35:51.368Z",
+    "arrivalTime": "2026-04-07T12:35:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 103,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1006",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-04-03T10:08:51.368Z",
+    "arrivalTime": "2026-04-03T11:08:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 111,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1007",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-13T18:56:51.368Z",
+    "arrivalTime": "2026-03-13T23:56:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 174,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1008",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-15T05:35:51.368Z",
+    "arrivalTime": "2026-03-15T06:35:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 88,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1009",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-04-06T10:54:51.368Z",
+    "arrivalTime": "2026-04-06T11:54:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 161,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1010",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-11T06:54:51.368Z",
+    "arrivalTime": "2026-03-11T11:54:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 17,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1011",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-20T05:23:51.368Z",
+    "arrivalTime": "2026-03-20T06:23:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 137,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1012",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-17T08:25:51.368Z",
+    "arrivalTime": "2026-03-17T09:25:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 150,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1013",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-03-31T10:39:51.368Z",
+    "arrivalTime": "2026-03-31T14:39:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 88,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1014",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-13T16:40:51.368Z",
+    "arrivalTime": "2026-03-13T18:40:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 40,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1015",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-28T18:14:51.368Z",
+    "arrivalTime": "2026-03-28T23:14:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 131,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1016",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-10T17:45:51.368Z",
+    "arrivalTime": "2026-03-10T22:45:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 74,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1017",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-04-01T05:59:51.368Z",
+    "arrivalTime": "2026-04-01T06:59:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 133,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1018",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-08T20:04:51.368Z",
+    "arrivalTime": "2026-03-08T21:04:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 170,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1019",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-20T22:36:51.368Z",
+    "arrivalTime": "2026-03-21T00:36:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 105,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1020",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-30T20:41:51.368Z",
+    "arrivalTime": "2026-03-30T22:41:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 72,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1021",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-10T18:30:51.368Z",
+    "arrivalTime": "2026-03-10T19:30:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 76,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1022",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-27T16:09:51.368Z",
+    "arrivalTime": "2026-03-27T17:09:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 165,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1023",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-24T04:38:51.368Z",
+    "arrivalTime": "2026-03-24T06:38:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 40,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1024",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-15T01:20:51.368Z",
+    "arrivalTime": "2026-03-15T06:20:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 48,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1025",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-18T21:52:51.368Z",
+    "arrivalTime": "2026-03-18T21:52:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 88,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1026",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-04-02T18:30:51.368Z",
+    "arrivalTime": "2026-04-02T19:30:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 78,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1027",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-12T15:10:51.368Z",
+    "arrivalTime": "2026-03-12T16:10:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 97,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1028",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-12T17:54:51.368Z",
+    "arrivalTime": "2026-03-12T18:54:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 133,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1029",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-20T06:59:51.368Z",
+    "arrivalTime": "2026-03-20T08:59:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 146,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1030",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-24T10:31:51.368Z",
+    "arrivalTime": "2026-03-24T11:31:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 154,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1031",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-21T15:09:51.368Z",
+    "arrivalTime": "2026-03-21T17:09:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 134,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1032",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-14T08:37:51.368Z",
+    "arrivalTime": "2026-03-14T08:37:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 90,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1033",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-21T00:59:51.368Z",
+    "arrivalTime": "2026-03-21T05:59:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 141,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1034",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-04-05T03:24:51.368Z",
+    "arrivalTime": "2026-04-05T03:24:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 65,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1035",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-04-03T20:26:51.368Z",
+    "arrivalTime": "2026-04-03T21:26:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 17,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1036",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-28T20:14:51.368Z",
+    "arrivalTime": "2026-03-28T21:14:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 89,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1037",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-31T04:33:51.368Z",
+    "arrivalTime": "2026-03-31T05:33:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 89,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1038",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-18T04:46:51.368Z",
+    "arrivalTime": "2026-03-18T06:46:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 47,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1039",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-13T16:04:51.368Z",
+    "arrivalTime": "2026-03-13T18:04:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 83,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1040",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-14T01:25:51.368Z",
+    "arrivalTime": "2026-03-14T02:25:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 32,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1041",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-04-03T03:07:51.368Z",
+    "arrivalTime": "2026-04-03T04:07:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 8,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1042",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-13T14:27:51.368Z",
+    "arrivalTime": "2026-03-13T15:27:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 9,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1043",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-21T07:37:51.368Z",
+    "arrivalTime": "2026-03-21T09:37:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 124,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1044",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-19T13:15:51.368Z",
+    "arrivalTime": "2026-03-19T18:15:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 142,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1045",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-18T03:06:51.368Z",
+    "arrivalTime": "2026-03-18T08:06:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 5,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1046",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-24T16:15:51.368Z",
+    "arrivalTime": "2026-03-24T17:15:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 48,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1047",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-04-06T15:12:51.368Z",
+    "arrivalTime": "2026-04-06T19:12:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 144,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1048",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-24T07:30:51.368Z",
+    "arrivalTime": "2026-03-24T07:30:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 128,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1049",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-25T08:37:51.368Z",
+    "arrivalTime": "2026-03-25T13:37:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 140,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1050",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-11T06:03:51.368Z",
+    "arrivalTime": "2026-03-11T07:03:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 41,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1051",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-15T02:44:51.368Z",
+    "arrivalTime": "2026-03-15T03:44:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 2,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1052",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-09T13:42:51.368Z",
+    "arrivalTime": "2026-03-09T14:42:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 8,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1053",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-30T05:50:51.368Z",
+    "arrivalTime": "2026-03-30T07:50:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 133,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1054",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-10T19:20:51.368Z",
+    "arrivalTime": "2026-03-10T20:20:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 134,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1055",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-21T02:29:51.368Z",
+    "arrivalTime": "2026-03-21T07:29:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 157,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1056",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-17T23:32:51.368Z",
+    "arrivalTime": "2026-03-17T23:32:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 54,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1057",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-17T13:50:51.368Z",
+    "arrivalTime": "2026-03-17T14:50:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 52,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1058",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-04-01T03:20:51.368Z",
+    "arrivalTime": "2026-04-01T07:20:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 161,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1059",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-23T17:11:51.368Z",
+    "arrivalTime": "2026-03-23T18:11:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 77,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1060",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-10T03:44:51.368Z",
+    "arrivalTime": "2026-03-10T08:44:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 9,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1061",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-31T16:44:51.368Z",
+    "arrivalTime": "2026-03-31T17:44:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 44,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1062",
+    "route": {
+      "origin": "HYD",
+      "destination": "MUM"
+    },
+    "departureTime": "2026-03-24T08:07:51.368Z",
+    "arrivalTime": "2026-03-24T09:07:51.368Z",
+    "duration": "1h 25m",
+    "basePrice": 3800,
+    "totalSeats": 180,
+    "seatsAvailable": 111,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1063",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-18T14:49:51.368Z",
+    "arrivalTime": "2026-03-18T16:49:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 146,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1064",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-12T22:24:51.368Z",
+    "arrivalTime": "2026-03-12T23:24:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 58,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1065",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-04-04T23:52:51.368Z",
+    "arrivalTime": "2026-04-05T01:52:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 19,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1066",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-13T19:10:51.368Z",
+    "arrivalTime": "2026-03-13T20:10:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 85,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1067",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-28T10:01:51.368Z",
+    "arrivalTime": "2026-03-28T12:01:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 45,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1068",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-03-22T00:47:51.368Z",
+    "arrivalTime": "2026-03-22T04:47:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 74,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1069",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-04-07T04:11:51.368Z",
+    "arrivalTime": "2026-04-07T05:11:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 18,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1070",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-04-04T03:00:51.368Z",
+    "arrivalTime": "2026-04-04T08:00:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 96,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1071",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-04-07T00:38:51.368Z",
+    "arrivalTime": "2026-04-07T01:38:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 130,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1072",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-04-01T20:25:51.368Z",
+    "arrivalTime": "2026-04-01T21:25:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 28,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1073",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-24T16:19:51.368Z",
+    "arrivalTime": "2026-03-24T16:19:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 90,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1074",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-24T18:30:51.368Z",
+    "arrivalTime": "2026-03-24T20:30:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 61,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1075",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-31T21:09:51.368Z",
+    "arrivalTime": "2026-04-01T02:09:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 8,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1076",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-04-07T07:35:51.368Z",
+    "arrivalTime": "2026-04-07T11:35:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 28,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1077",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-22T21:18:51.368Z",
+    "arrivalTime": "2026-03-23T02:18:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 118,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1078",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-12T18:57:51.368Z",
+    "arrivalTime": "2026-03-12T19:57:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 28,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1079",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-23T12:10:51.368Z",
+    "arrivalTime": "2026-03-23T13:10:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 84,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1080",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-04-03T18:55:51.368Z",
+    "arrivalTime": "2026-04-03T20:55:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 78,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1081",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-21T13:26:51.368Z",
+    "arrivalTime": "2026-03-21T14:26:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 116,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1082",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-22T08:25:51.368Z",
+    "arrivalTime": "2026-03-22T09:25:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 38,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1083",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-12T09:50:51.368Z",
+    "arrivalTime": "2026-03-12T10:50:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 174,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1084",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-31T02:14:51.368Z",
+    "arrivalTime": "2026-03-31T02:14:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 23,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1085",
+    "route": {
+      "origin": "BLR",
+      "destination": "MAA"
+    },
+    "departureTime": "2026-03-14T06:20:51.368Z",
+    "arrivalTime": "2026-03-14T07:20:51.368Z",
+    "duration": "1h 0m",
+    "basePrice": 2800,
+    "totalSeats": 180,
+    "seatsAvailable": 16,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1086",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-12T17:56:51.368Z",
+    "arrivalTime": "2026-03-12T17:56:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 6,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1087",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-11T22:05:51.368Z",
+    "arrivalTime": "2026-03-12T03:05:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 51,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1088",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-04-07T08:10:51.368Z",
+    "arrivalTime": "2026-04-07T09:10:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 52,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1089",
+    "route": {
+      "origin": "HYD",
+      "destination": "DEL"
+    },
+    "departureTime": "2026-03-12T00:03:51.368Z",
+    "arrivalTime": "2026-03-12T02:03:51.368Z",
+    "duration": "2h 15m",
+    "basePrice": 4500,
+    "totalSeats": 180,
+    "seatsAvailable": 34,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1090",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-04-04T02:49:51.368Z",
+    "arrivalTime": "2026-04-04T02:49:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 28,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1091",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-03-11T10:35:51.368Z",
+    "arrivalTime": "2026-03-11T14:35:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 162,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1092",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-11T04:53:51.368Z",
+    "arrivalTime": "2026-03-11T09:53:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 16,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1093",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-03-16T06:09:51.368Z",
+    "arrivalTime": "2026-03-16T10:09:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 22,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1094",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-03-23T03:55:51.368Z",
+    "arrivalTime": "2026-03-23T07:55:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 24,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1095",
+    "route": {
+      "origin": "DEL",
+      "destination": "DXB"
+    },
+    "departureTime": "2026-03-15T01:03:51.368Z",
+    "arrivalTime": "2026-03-15T05:03:51.368Z",
+    "duration": "4h 30m",
+    "basePrice": 12500,
+    "totalSeats": 180,
+    "seatsAvailable": 136,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1096",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-30T01:12:51.368Z",
+    "arrivalTime": "2026-03-30T06:12:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 3,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1097",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-03-13T22:57:51.368Z",
+    "arrivalTime": "2026-03-13T23:57:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 172,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1098",
+    "route": {
+      "origin": "VIJ",
+      "destination": "HYD"
+    },
+    "departureTime": "2026-03-12T03:49:51.368Z",
+    "arrivalTime": "2026-03-12T03:49:51.368Z",
+    "duration": "0h 45m",
+    "basePrice": 2500,
+    "totalSeats": 180,
+    "seatsAvailable": 0,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1099",
+    "route": {
+      "origin": "DEL",
+      "destination": "SIN"
+    },
+    "departureTime": "2026-03-29T16:28:51.368Z",
+    "arrivalTime": "2026-03-29T21:28:51.368Z",
+    "duration": "5h 45m",
+    "basePrice": 15500,
+    "totalSeats": 180,
+    "seatsAvailable": 28,
+    "status": "Scheduled"
+  },
+  {
+    "flightNumber": "SSS1100",
+    "route": {
+      "origin": "HYD",
+      "destination": "BLR"
+    },
+    "departureTime": "2026-04-07T10:33:51.368Z",
+    "arrivalTime": "2026-04-07T11:33:51.368Z",
+    "duration": "1h 10m",
+    "basePrice": 3200,
+    "totalSeats": 180,
+    "seatsAvailable": 26,
+    "status": "Scheduled"
+  }
+]

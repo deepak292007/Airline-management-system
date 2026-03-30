@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings / SSS Airlines</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding: 80px 5%; }
+        .booking-list { display: grid; gap: 1.5rem; }
+        .booking-card { display: flex; flex-direction: column; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: var(--radius-sm); }
+        .booking-card h3 { margin: 0 0 0.5rem; }
+        .booking-card .status { font-weight: 600; }
+        .search-container { max-width: 400px; margin: 0 auto 2rem; }
+        .btn-small { padding: 0.4rem 1rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="logo">
+            <i class="fa-solid fa-crown" style="font-size: 1.5rem;"></i> SSS<span>Airlines</span>
+        </a>
+        <div class="nav-links">
+            <a href="../pages/booking-status.html" id="loginBtn"><i class="fa-solid fa-user"></i> My Account</a>
+        </div>
+    </nav>
+
+    <h1 style="text-align:center; margin-bottom:2rem; color:var(--secondary);">Your Bookings</h1>
+
+    <div class="search-container">
+        <input type="text" id="searchPnr" placeholder="Enter booking ref or ticket #" style="width:100%; padding:0.8rem;">
+    </div>
+
+    <div class="booking-list" id="bookingList">
+        <!-- cards inserted here -->
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000';
+        const token = localStorage.getItem('token');
+        const bookingList = document.getElementById('bookingList');
+        const searchInput = document.getElementById('searchPnr');
+        const loginBtn = document.getElementById('loginBtn');
+        let bookingsCache = [];
+
+        if (!token) {
+            window.location.href = `../pages/login.html?redirect=${encodeURIComponent('booking-status.html')}`;
+        }
+
+        const setMessage = (message) => {
+            bookingList.innerHTML = `<p style="text-align:center;">${message}</p>`;
+        };
+
+        function renderBookings(bookings = []) {
+            bookingsCache = bookings;
+
+            if (!bookings.length) {
+                setMessage('No bookings found.');
+                return;
+            }
+
+            bookingList.innerHTML = bookings.map((booking, index) => `
+                <div class="booking-card glass-panel">
+                    <h3>${booking.flight.flightNumber} &ndash; ${booking.flight.route.origin} &rarr; ${booking.flight.route.destination}</h3>
+                    <p><span class="status">Status:</span> ${booking.status}</p>
+                    <p><span class="status">Cabin:</span> ${booking.class}</p>
+                    <p><span class="status">Seat:</span> ${booking.seatNumber}</p>
+                    <p><span class="status">Ref:</span> ${booking.bookingId}</p>
+                    <div style="margin-top:0.5rem; text-align:right;">
+                        <button class="btn-primary btn-small" data-index="${index}">View ticket</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function viewTicket(index) {
+            const booking = bookingsCache[Number(index)];
+            if (!booking) return;
+
+            sessionStorage.setItem('ticketData', JSON.stringify(booking));
+            window.location.href = '../pages/ticket.html';
+        }
+
+        bookingList.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-index]');
+            if (button) viewTicket(button.dataset.index);
+        });
+
+        searchInput.addEventListener('input', ({ target }) => {
+            const term = target.value.toLowerCase();
+            bookingList.querySelectorAll('.booking-card').forEach((card) => {
+                card.style.display = card.innerText.toLowerCase().includes(term) ? 'flex' : 'none';
+            });
+        });
+
+        loginBtn?.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (!confirm('Logout?')) return;
+
+            localStorage.removeItem('token');
+            localStorage.removeItem('passenger');
+            window.location.href = '../index.html';
+        });
+
+        async function loadBookings() {
+            try {
+                const res = await fetch(`${API_BASE}/booking/mine`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                const data = await res.json();
+
+                if (!res.ok) throw new Error(data.error || 'Failed to load');
+                renderBookings(data.data);
+            } catch (error) {
+                console.error(error);
+                setMessage('Unable to retrieve bookings. Please try again later.');
+            }
+        }
+
+        loadBookings();
+    </script>
+</body>
+</html>

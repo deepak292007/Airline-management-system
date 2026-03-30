@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Dashboard / SSS Airlines</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, rgba(26,5,13,0.95) 0%, rgba(92,15,43,0.9) 100%);
+            border-right: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+        }
+
+        .menu-items { display: flex; flex-direction: column; gap: 0.8rem; }
+
+        .menu-item {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex; align-items: center; gap: 1rem;
+            font-size: 0.95rem; font-weight: 500;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--secondary);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .main-content {
+            padding: 3rem 5rem;
+            overflow-y: auto;
+            background: rgba(26,5,13,0.7);
+        }
+
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem; margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            display: flex; align-items: center; gap: 1.5rem;
+            background: rgba(0,0,0,0.4);
+            border-top: 3px solid var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover { transform: translateY(-5px); }
+
+        .stat-icon {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(212, 175, 55, 0.1);
+            font-size: 1.8rem; color: var(--secondary);
+        }
+        
+        .stat-info h3 {
+            font-size: 0.8rem; color: var(--text-muted);
+            margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-info .value {
+            font-size: 2rem; font-weight: 400; font-family: 'Playfair Display', serif; color: var(--text-main);
+        }
+
+        .charts-container {
+            display: grid; grid-template-columns: 2fr 1fr;
+            gap: 2rem; margin-bottom: 4rem;
+        }
+
+        .chart-box { padding: 2rem; background: rgba(0,0,0,0.4); }
+
+        #adminLoginOverlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a050d; z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        form {
+            display: flex; flex-direction: column; gap: 1rem;
+        }
+
+        input, select {
+            padding: 0.5rem; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: var(--text-main); border-radius: 4px;
+        }
+
+        .btn-primary {
+            padding: 0.5rem 1rem; background: var(--secondary); color: #1a050d; border: none; border-radius: 4px; cursor: pointer; align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="texture-overlay"></div>
+    </div>
+    
+    <!-- Login Simulation overlay -->
+    <div id="adminLoginOverlay">
+        <div class="glass-panel" style="padding: 4rem; width: 450px; text-align: center; background: rgba(0,0,0,0.6); border-top: 4px solid var(--secondary);">
+            <div class="logo" style="justify-content: center; margin-bottom: 2rem; font-size: 2.5rem;">
+                <i class="fa-solid fa-crown"></i> Executive
+            </div>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; font-family: 'Montserrat';">Authorized Personnel Only</p>
+            <input type="password" id="adminSecret" placeholder="Passcode" style="width: 100%; padding: 1.2rem; margin-bottom: 2rem; color: var(--secondary); border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); text-align: center; letter-spacing: 5px; font-size: 1.2rem;">
+            <button class="btn-primary" style="width: 100%; padding: 1.2rem;" onclick="adminLogin()">Access Terminal</button>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <a href="../index.html" class="logo" style="margin-bottom: 2rem; font-size: 1.8rem;">
+                SSS<span>Executive</span>
+            </a>
+            <div class="menu-items">
+                <a href="#" class="menu-item active" onclick="showSection('analytics')"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="#" class="menu-item" onclick="showSection('fleet')"><i class="fa-solid fa-plane"></i> Fleet Control</a>
+                <a href="#" class="menu-item" onclick="showSection('guests')"><i class="fa-solid fa-users"></i> Guests</a>
+                <a href="#" class="menu-item" onclick="showSection('revenue')"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue</a>
+                <a href="#" class="menu-item" onclick="logout()" style="color: #ef4444; margin-top: 2rem;"><i class="fa-solid fa-right-from-bracket"></i> Secure Logout</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="analytics-section">
+                <h1 style="margin-bottom: 3rem; font-size: 3rem; color: var(--secondary);">Executive Overview</h1>
+                
+                <div class="stats-grid">
+                    <div class="glass-panel stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-plane"></i></div>
+                        <div class="stat-info"><h3>Active Fleet</h3><div class="value" id="stat-flights">--</div></div>
+                    </div>
+                    <div class="glass-panel stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="stat-info"><h3>Reservations</h3><div class="value" id="stat-bookings">--</div></div>
+                    </div>
+                    <div class="glass-panel stat-card">
+                        <div class="stat-icon" style="color: #f2e3c6;"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div class="stat-info"><h3>Total Revenue</h3><div class="value" id="stat-revenue" style="color: #f2e3c6;">--</div></div>
+                    </div>
+                    <div class="glass-panel stat-card">
+                        <div class="stat-icon" style="color: var(--secondary);"><i class="fa-solid fa-percent"></i></div>
+                        <div class="stat-info"><h3>Occupancy</h3><div class="value" id="stat-occupancy">--</div></div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="glass-panel chart-box">
+                        <h3 style="margin-bottom: 2rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 1.5rem;">Revenue Trajectory (Weekly)</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="glass-panel chart-box">
+                        <h3 style="margin-bottom: 2rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 1.5rem;">Fleet Status</h3>
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="glass-panel chart-box" style="margin-bottom: 3rem;">
+                    <h3 style="margin-bottom: 2rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 1.5rem;">Recent Premium Reservations</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-family: 'Montserrat';">
+                        <tr style="border-bottom: 2px solid var(--secondary); color: var(--secondary); font-size: 0.85rem; text-transform: uppercase;">
+                            <th style="padding: 1rem 1.5rem;">Reference</th>
+                            <th style="padding: 1rem 1.5rem;">Guest</th>
+                            <th style="padding: 1rem 1.5rem;">Flight Details</th>
+                            <th style="padding: 1rem 1.5rem; text-align: right;">Status</th>
+                        </tr>
+                        <tbody id="bookingsTable">
+                            <tr><td colspan="4" style="padding: 2rem; text-align: center;">Initializing...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="fleet-section" style="display: none;">
+                <h1 style="margin-bottom: 3rem; font-size: 3rem; color: var(--secondary);">Fleet Control</h1>
+                <button class="btn-primary" onclick="showAddFlightForm()">Add New Flight</button>
+                <div id="addFlightForm" style="display: none; margin-top: 2rem;" class="glass-panel">
+                    <h3>Add Flight</h3>
+                    <form onsubmit="addFlight(event)">
+                        <input type="text" name="flightNumber" placeholder="Flight Number" required>
+                        <input type="text" name="origin" placeholder="Origin" required>
+                        <input type="text" name="destination" placeholder="Destination" required>
+                        <input type="datetime-local" name="departureTime" required>
+                        <input type="datetime-local" name="arrivalTime" required>
+                        <input type="text" name="duration" placeholder="Duration (e.g. 2h 30m)" required>
+                        <input type="number" name="basePrice" placeholder="Base Price" required>
+                        <input type="number" name="totalSeats" placeholder="Total Seats" required>
+                        <input type="number" name="seatsAvailable" placeholder="Available Seats" required>
+                        <button type="submit" class="btn-primary">Add Flight</button>
+                    </form>
+                </div>
+                <div class="glass-panel chart-box" style="margin-top: 2rem;">
+                    <h3 style="margin-bottom: 2rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 1.5rem;">Current Flights</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-family: 'Montserrat';">
+                        <tr style="border-bottom: 2px solid var(--secondary); color: var(--secondary); font-size: 0.85rem; text-transform: uppercase;">
+                            <th style="padding: 1rem 1.5rem;">Flight Number</th>
+                            <th style="padding: 1rem 1.5rem;">Route</th>
+                            <th style="padding: 1rem 1.5rem;">Departure</th>
+                            <th style="padding: 1rem 1.5rem;">Price</th>
+                            <th style="padding: 1rem 1.5rem; text-align: right;">Actions</th>
+                        </tr>
+                        <tbody id="flightsTable">
+                            <tr><td colspan="5" style="padding: 2rem; text-align: center;">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="guests-section" style="display: none;">
+                <h1 style="margin-bottom: 3rem; font-size: 3rem; color: var(--secondary);">Guests Management</h1>
+                <button class="btn-primary" onclick="showAddPassengerForm()">Add New Passenger</button>
+                <div id="addPassengerForm" style="display: none; margin-top: 2rem;" class="glass-panel">
+                    <h3>Add Passenger</h3>
+                    <form onsubmit="addPassenger(event)">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+                        <button type="submit" class="btn-primary">Add Passenger</button>
+                    </form>
+                </div>
+                <div class="glass-panel chart-box" style="margin-top: 2rem;">
+                    <h3 style="margin-bottom: 2rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 1.5rem;">Passengers</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-family: 'Montserrat';">
+                        <tr style="border-bottom: 2px solid var(--secondary); color: var(--secondary); font-size: 0.85rem; text-transform: uppercase;">
+                            <th style="padding: 1rem 1.5rem;">Name</th>
+                            <th style="padding: 1rem 1.5rem;">Email</th>
+                            <th style="padding: 1rem 1.5rem;">Phone</th>
+                            <th style="padding: 1rem 1.5rem; text-align: right;">Actions</th>
+                        </tr>
+                        <tbody id="passengersTable">
+                            <tr><td colspan="4" style="padding: 2rem; text-align: center;">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="revenue-section" style="display: none;">
+                <h1 style="margin-bottom: 3rem; font-size: 3rem; color: var(--secondary);">Revenue Analytics</h1>
+                <p>Revenue details here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000';
+        let adminToken = sessionStorage.getItem('adminToken');
+
+        if (adminToken) {
+            document.getElementById('adminLoginOverlay').style.display = 'none';
+            fetchDashboardData();
+        }
+
+        async function adminLogin() {
+            const secret = document.getElementById('adminSecret').value;
+            try {
+                const res = await fetch(`${API_BASE}/admin/login-simulation`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ secret })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    sessionStorage.setItem('adminToken', data.token);
+                    adminToken = data.token;
+                    document.getElementById('adminLoginOverlay').style.display = 'none';
+                    fetchDashboardData();
+                } else { alert('Invalid Access Code'); }
+            } catch (err) { alert('Server network error'); }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('adminToken');
+            window.location.reload();
+        }
+
+        function showSection(section) {
+            document.querySelectorAll('.main-content > div').forEach(div => div.style.display = 'none');
+            document.getElementById(section + '-section').style.display = 'block';
+            document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            if (section === 'analytics') fetchDashboardData();
+            if (section === 'fleet') fetchFlights();
+            if (section === 'guests') fetchPassengers();
+        }
+
+        async function fetchFlights() {
+            try {
+                const res = await fetch(`${API_BASE}/admin/flights`, { headers: { 'Authorization': `Bearer ${adminToken}` } });
+                const flights = await res.json();
+                const table = document.getElementById('flightsTable');
+                table.innerHTML = flights.map(f => `
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 1.5rem;">${f.flightNumber}</td>
+                        <td style="padding: 1.5rem;">${f.route.origin} - ${f.route.destination}</td>
+                        <td style="padding: 1.5rem;">${new Date(f.departureTime).toLocaleString()}</td>
+                        <td style="padding: 1.5rem;">₹${f.basePrice}</td>
+                        <td style="padding: 1.5rem; text-align: right;"><button onclick="deleteFlight('${f._id}')" style="background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px;">Delete</button></td>
+                    </tr>
+                `).join('');
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchPassengers() {
+            try {
+                const res = await fetch(`${API_BASE}/admin/passengers`, { headers: { 'Authorization': `Bearer ${adminToken}` } });
+                const passengers = await res.json();
+                const table = document.getElementById('passengersTable');
+                table.innerHTML = passengers.map(p => `
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 1.5rem;">${p.name}</td>
+                        <td style="padding: 1.5rem;">${p.email}</td>
+                        <td style="padding: 1.5rem;">${p.phoneNumber}</td>
+                        <td style="padding: 1.5rem; text-align: right;"><button onclick="deletePassenger('${p._id}')" style="background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px;">Delete</button></td>
+                    </tr>
+                `).join('');
+            } catch (e) { console.error(e); }
+        }
+
+        function showAddFlightForm() {
+            document.getElementById('addFlightForm').style.display = 'block';
+        }
+
+        async function addFlight(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            data.route = { origin: data.origin, destination: data.destination };
+            delete data.origin; delete data.destination;
+            data.departureTime = new Date(data.departureTime).toISOString();
+            data.arrivalTime = new Date(data.arrivalTime).toISOString();
+            try {
+                const res = await fetch(`${API_BASE}/admin/flights`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${adminToken}` },
+                    body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                    alert('Flight added');
+                    fetchFlights();
+                    document.getElementById('addFlightForm').style.display = 'none';
+                } else {
+                    alert('Error adding flight');
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function deleteFlight(id) {
+            if (confirm('Delete this flight?')) {
+                try {
+                    const res = await fetch(`${API_BASE}/admin/flights/${id}`, {
+                        method: 'DELETE',
+                        headers: { 'Authorization': `Bearer ${adminToken}` }
+                    });
+                    if (res.ok) {
+                        alert('Flight deleted');
+                        fetchFlights();
+                    } else {
+                        alert('Error deleting flight');
+                    }
+                } catch (e) { console.error(e); }
+            }
+        }
+
+        function showAddPassengerForm() {
+            document.getElementById('addPassengerForm').style.display = 'block';
+        }
+
+        async function addPassenger(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            try {
+                const res = await fetch(`${API_BASE}/admin/passengers`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${adminToken}` },
+                    body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                    alert('Passenger added');
+                    fetchPassengers();
+                    document.getElementById('addPassengerForm').style.display = 'none';
+                } else {
+                    alert('Error adding passenger');
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function deletePassenger(id) {
+            if (confirm('Delete this passenger?')) {
+                try {
+                    const res = await fetch(`${API_BASE}/admin/passengers/${id}`, {
+                        method: 'DELETE',
+                        headers: { 'Authorization': `Bearer ${adminToken}` }
+                    });
+                    if (res.ok) {
+                        alert('Passenger deleted');
+                        fetchPassengers();
+                    } else {
+                        alert('Error deleting passenger');
+                    }
+                } catch (e) { console.error(e); }
+            }
+        }
+
+        async function fetchDashboardData() {
+            try {
+                const res = await fetch(`${API_BASE}/admin/analytics`, { headers: { 'Authorization': `Bearer ${adminToken}` } });
+                const stats = await res.json();
+                
+                document.getElementById('stat-flights').innerText = stats.totalFlights || 0;
+                document.getElementById('stat-bookings').innerText = stats.totalBookings || 0;
+                document.getElementById('stat-revenue').innerText = '₹' + ((stats.revenue || 0) + 18500000).toLocaleString(); // Adjusted baseline demo revenue 
+                document.getElementById('stat-occupancy').innerText = stats.occupancyRate || '0%';
+
+                const bkRes = await fetch(`${API_BASE}/admin/bookings`, { headers: { 'Authorization': `Bearer ${adminToken}` } });
+                const bookings = await bkRes.json();
+                const table = document.getElementById('bookingsTable');
+
+                if (bookings.length > 0) {
+                    table.innerHTML = bookings.slice(0, 6).map(b => `
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(212,175,55,0.05)'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 1.5rem; font-family: monospace; font-size: 1.1rem; color: var(--text-main);">${b.bookingId}</td>
+                            <td style="padding: 1.5rem;">${b.passenger ? b.passenger.phoneNumber : 'N/A'}</td>
+                            <td style="padding: 1.5rem; color: var(--accent);">${b.flight ? (b.flight.flightNumber + ' (Seat: ' + b.seatNumber + ')') : 'N/A'}</td>
+                            <td style="padding: 1.5rem; text-align: right;"><span style="color: ${b.status === 'Confirmed' ? '#22c55e' : '#f59e0b'}; font-weight: 600; padding: 0.3rem 0.8rem; background: rgba(0,0,0,0.5); border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">${b.status}</span></td>
+                        </tr>
+                    `).join('');
+                } else {
+                    table.innerHTML = '<tr><td colspan="4" style="padding: 3rem; text-align: center; color: var(--text-muted);">No reservations found.</td></tr>';
+                }
+                initCharts();
+            } catch (e) { console.error(e); }
+        }
+
+        function initCharts() {
+            Chart.defaults.color = 'rgba(255, 255, 255, 0.7)';
+            Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.05)';
+            Chart.defaults.font.family = "'Montserrat', sans-serif";
+
+            // Revenue Chart
+            const revCtx = document.getElementById('revenueChart').getContext('2d');
+            const gradient = revCtx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(212, 175, 55, 0.4)');
+            gradient.addColorStop(1, 'rgba(212, 175, 55, 0.0)');
+
+            new Chart(revCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Revenue (₹)',
+                        data: [1200000, 1500000, 1100000, 1800000, 2400000, 3100000, 2800000],
+                        borderColor: '#d4af37',
+                        backgroundColor: gradient,
+                        tension: 0.4, fill: true,
+                        pointBackgroundColor: '#1a050d', pointBorderColor: '#d4af37',
+                        pointBorderWidth: 2, pointRadius: 5
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } }
+                }
+            });
+
+            // Doughnut Chart
+            const statusCtx = document.getElementById('statusChart').getContext('2d');
+            new Chart(statusCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Scheduled', 'Delayed', 'Cancelled'],
+                    datasets: [{
+                        data: [94, 4, 2],
+                        backgroundColor: ['#22c55e', '#d4af37', '#ef4444'],
+                        borderWidth: 0, hoverOffset: 4
+                    }]
+                },
+                options: { responsive: true, cutout: '75%', plugins: { legend: { position: 'bottom', labels: { padding: 20 } } } }
+            });
+        }
+    </script>
+</body>
+</html>

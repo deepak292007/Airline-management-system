@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / SSS Airlines</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-box {
+            width: 100%;
+            max-width: 450px;
+            padding: 3rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(92,15,43,0.8) 0%, rgba(26,5,13,0.9) 100%);
+            border-top: 4px solid var(--secondary);
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .test-hint {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-decoration: underline;
+            letter-spacing: 1px;
+        }
+        h2 { margin-bottom: 0.5rem; font-size: 2rem; color: var(--secondary); }
+        input { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="texture-overlay"></div>
+    </div>
+    
+    <div class="login-box glass-panel">
+        <a href="../index.html" class="logo" style="justify-content: center; margin-bottom: 2.5rem; font-size: 2.5rem;">
+            <i class="fa-solid fa-crown" style="font-size: 1.5rem;"></i> SSS
+        </a>
+
+        <!-- Step 1: Phone -->
+        <div id="step-phone" class="step active">
+            <h2>Privilege Club</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.95rem; font-family: 'Montserrat';">Enter any 10-digit mobile number to receive your OTP</p>
+            
+            <form id="phoneForm">
+                <div class="input-group" style="text-align: left; margin-bottom: 2rem;">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" value="+91" style="width: 70px; font-weight: bold; color: var(--secondary);" readonly>
+                        <input type="tel" id="phoneNumber" placeholder="9876543210" required pattern="[0-9]{10}" inputmode="numeric" style="flex: 1; font-weight: bold; letter-spacing: 2px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; font-size: 1rem; padding: 1rem;">Continue to Privilege</button>
+            </form>
+        </div>
+
+        <!-- Step 2: OTP -->
+        <div id="step-otp" class="step">
+            <h2>Authentication</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.95rem; font-family: 'Montserrat';">A 4-digit code has been dispatched</p>
+            
+            <form id="otpForm">
+                <div class="input-group" style="margin-bottom: 2rem;">
+                    <input type="text" id="otpCode" placeholder="• • • •" required maxlength="4" style="text-align: center; letter-spacing: 1rem; font-size: 2rem; font-weight: bold; padding: 1.5rem; color: var(--secondary);">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; font-size: 1rem; padding: 1rem;">Verify Identity</button>
+            </form>
+            <div id="simulatedOtpDisplay" style="margin-top: 1.5rem; color: var(--secondary); font-weight: bold; font-family: 'Montserrat'; letter-spacing: 1px;"></div>
+            <button onclick="location.reload()" style="background: none; border: none; color: var(--text-muted); margin-top: 1.5rem; cursor: pointer; text-decoration: underline; font-family: 'Montserrat'; font-size: 0.8rem; text-transform: uppercase;">Restart Verification</button>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000';
+        let currentPhone = '';
+        const phoneInput = document.getElementById('phoneNumber');
+
+        const normalizePhoneNumber = (value) => {
+            const digits = value.replace(/\D/g, '').slice(-10);
+            return digits.length === 10 ? `+91${digits}` : null;
+        };
+
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+        });
+
+        document.getElementById('phoneForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const normalizedPhone = normalizePhoneNumber(phoneInput.value);
+
+            if (!normalizedPhone) {
+                alert('Please enter a valid 10-digit mobile number.');
+                phoneInput.focus();
+                return;
+            }
+
+            currentPhone = normalizedPhone;
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phoneNumber: currentPhone })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('step-phone').classList.remove('active');
+                    document.getElementById('step-otp').classList.add('active');
+                    
+                    document.getElementById('simulatedOtpDisplay').innerText = '[DEMO CODE]: ' + data.simulationOtp;
+                } else {
+                    alert(data.error || 'Login failed');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Server error');
+            }
+        });
+
+        document.getElementById('otpForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const otpCode = document.getElementById('otpCode').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/verify-otp`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phoneNumber: currentPhone, otp: otpCode })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('passenger', JSON.stringify(data.passenger));
+                    
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const redirect = urlParams.get('redirect');
+                    
+                    if (redirect) window.location.href = redirect;
+                    else window.location.href = '../index.html';
+                } else {
+                    alert(data.error || 'Invalid OTP');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Server error');
+            }
+        });
+    </script>
+</body>
+</html>

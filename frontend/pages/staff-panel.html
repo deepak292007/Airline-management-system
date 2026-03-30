@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations Panel / SSS Airlines</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .staff-container {
+            max-width: 1300px;
+            margin: 120px auto 0;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 3rem;
+            min-height: 80vh;
+        }
+
+        .action-panel, .manifest-panel {
+            background: linear-gradient(180deg, rgba(26,5,13,0.95) 0%, rgba(92,15,43,0.6) 100%);
+            border: 1px solid var(--glass-border);
+            border-top: 4px solid var(--secondary);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .action-panel { display: flex; flex-direction: column; gap: 2rem; height: fit-content; }
+
+        .search-box { position: relative; }
+
+        .search-box input {
+            width: 100%;
+            padding: 1.2rem 1.2rem 1.2rem 3rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 4px; color: white;
+            font-size: 1.1rem; letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .search-box input:focus { border-color: var(--secondary); box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+
+        .search-box i {
+            position: absolute; left: 1.2rem; top: 50%;
+            transform: translateY(-50%); color: var(--secondary);
+        }
+
+        .manifest-container { display: flex; flex-direction: column; gap: 1rem; }
+
+        .manifest-card {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 2rem; border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .manifest-card:hover {
+            transform: translateX(10px);
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .manifest-details h4 {
+            color: var(--text-main); margin-bottom: 0.3rem;
+            font-family: 'Montserrat'; letter-spacing: 1px;
+        }
+
+        .manifest-details p { color: var(--text-muted); font-size: 0.85rem; }
+
+        .btn-group { display: flex; gap: 0.8rem; }
+
+        .btn-sm {
+            padding: 0.6rem 1.2rem; border: none; border-radius: 4px;
+            cursor: pointer; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-danger:hover { background: var(--danger); color: white; }
+
+        .btn-success {
+            background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .btn-success:hover { background: var(--success); color: white; }
+
+        .btn-verify {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b8860b 100%);
+            color: #1a050d;
+        }
+
+        .btn-verify:hover { box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4); transform: translateY(-2px); }
+
+        #staffLoginOverlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a050d; z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="texture-overlay"></div>
+    </div>
+    
+    <div id="staffLoginOverlay">
+        <div class="glass-panel" style="padding: 4rem; width: 450px; text-align: center; background: rgba(0,0,0,0.6); border-top: 4px solid var(--secondary);">
+            <div class="logo" style="justify-content: center; margin-bottom: 2rem; font-size: 2.2rem;">
+                SSS<span>Operations</span>
+            </div>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; font-family: 'Montserrat';">Crew Authorization Required (Code: Team4)</p>
+            <input type="password" id="staffSecret" placeholder="Agent Passcode" style="width: 100%; padding: 1.2rem; margin-bottom: 2rem; color: var(--secondary); border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); text-align: center; letter-spacing: 5px; font-size: 1.2rem;">
+            <button class="btn-primary" style="width: 100%; padding: 1.2rem;" onclick="staffLogin()">Authenticate</button>
+        </div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="logo">
+            <i class="fa-solid fa-crown" style="font-size: 1.5rem;"></i> SSS<span>Airlines</span>
+            <span style="font-size: 0.8rem; color: var(--secondary); margin-left: 0.5rem; letter-spacing: 1px; font-family: 'Montserrat';">| Operations Control</span>
+        </a>
+        <div class="nav-links">
+            <span id="staffName" style="margin-right: 1.5rem; color: var(--secondary); font-weight: 500; letter-spacing: 1px;"></span>
+            <a href="#" onclick="logout()" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i> Disable Uplink</a>
+        </div>
+    </nav>
+
+    <div class="staff-container">
+        <!-- Actions Panel -->
+        <div class="action-panel">
+            <div>
+                <h3 style="margin-bottom: 1.5rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 1.5rem;">Flight Manifest</h3>
+                <div class="search-box input-group">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <input type="text" id="flightSearchInput" placeholder="Flight No (e.g SSS1042)">
+                </div>
+                <button class="btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;" onclick="searchFlight()">Retrieve Manifest</button>
+            </div>
+
+            <div id="flightControls" style="display: none; margin-top: 1rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <h3 style="margin-bottom: 1.5rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 1.5rem;">Dispatch Actions</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <button class="btn-sm" style="background: rgba(212, 175, 55, 0.1); color: var(--secondary); border: 1px solid rgba(212, 175, 55, 0.3); padding: 1rem;">Update Status: Delayed</button>
+                    <button class="btn-sm btn-success" style="padding: 1rem;">Commence Boarding</button>
+                    <button class="btn-sm btn-danger" style="padding: 1rem;">Ground Aircraft</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manifest Panel -->
+        <div class="manifest-panel" style="overflow-y: auto; height: 75vh;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem;">
+                <h2 id="manifestTitle" style="font-size: 2rem; color: var(--text-main);">Passenger Manifest</h2>
+                <span id="paxCount" class="text-muted" style="font-weight: 500; color: var(--secondary); letter-spacing: 1px;">0 Souls on Board</span>
+            </div>
+            
+            <div id="manifestList" class="manifest-container">
+                <div style="text-align: center; color: var(--text-muted); padding: 5rem 0;">
+                    <i class="fa-solid fa-satellite-dish" style="font-size: 4rem; margin-bottom: 1.5rem; opacity: 0.3; color: var(--secondary);"></i>
+                    <p style="letter-spacing: 1px; font-size: 0.9rem; text-transform: uppercase;">Awaiting Flight Designation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000';
+        let staffToken = sessionStorage.getItem('staffToken');
+
+        if (staffToken) { document.getElementById('staffLoginOverlay').style.display = 'none'; }
+
+        async function staffLogin() {
+            const secret = document.getElementById('staffSecret').value;
+            try {
+                const res = await fetch(`${API_BASE}/admin/login-simulation`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ secret })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    sessionStorage.setItem('staffToken', data.token);
+                    staffToken = data.token;
+                    document.getElementById('staffLoginOverlay').style.display = 'none';
+                    document.getElementById('staffName').innerText = 'Agent 007';
+                } else { alert('Invalid Clearance Code'); }
+            } catch (err) { alert('Network failure'); }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('staffToken');
+            window.location.reload();
+        }
+
+        async function searchFlight() {
+            const flightNumStr = document.getElementById('flightSearchInput').value.trim().toUpperCase();
+            if (!flightNumStr) return;
+
+            const list = document.getElementById('manifestList');
+            const title = document.getElementById('manifestTitle');
+            const count = document.getElementById('paxCount');
+            const controls = document.getElementById('flightControls');
+
+            list.innerHTML = '<div style="text-align: center; padding: 4rem; color: var(--secondary);"><i class="fa-solid fa-spinner fa-spin fa-2x"></i><p style="margin-top: 1rem; letter-spacing: 2px;">RETRIEVING DATA...</p></div>';
+
+            try {
+                const res = await fetch(`${API_BASE}/admin/bookings`, { headers: { 'Authorization': `Bearer ${staffToken}` } });
+                if (!res.ok) throw new Error('Failed to fetch data');
+                
+                const allBookings = await res.json();
+                const flightBookings = allBookings.filter(b => b.flight && b.flight.flightNumber === flightNumStr);
+
+                if (flightBookings.length > 0) {
+                    title.innerText = `Manifest - ${flightNumStr}`;
+                    count.innerText = `${flightBookings.length} Passengers (${flightBookings[0].flight.route.origin} to ${flightBookings[0].flight.route.destination})`;
+                    controls.style.display = 'block';
+
+                    list.innerHTML = flightBookings.map((b, i) => `
+                        <div class="manifest-card" style="animation: fadeIn 0.5s ease backwards ${i * 0.1}s;">
+                            <div class="manifest-details">
+                                <h4 style="font-size: 1.1rem;">${b.passenger ? b.passenger.phoneNumber : 'Unknown'}</h4>
+                                <p style="font-family: monospace; letter-spacing: 1px; margin-top: 0.5rem; color: rgba(255,255,255,0.6);">PNR: <span style="color: var(--text-main);">${b.bookingId}</span> | Cabin: <span style="color: var(--secondary);">${b.class}</span></p>
+                            </div>
+                            <div style="text-align: right; margin-right: 2rem;">
+                                <div style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--secondary);">${b.seatNumber}</div>
+                                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: ${b.status === 'Confirmed' ? '#22c55e' : '#f59e0b'}; padding: 0.2rem 0.6rem; background: rgba(0,0,0,0.5); border-radius: 4px; display: inline-block; margin-top: 0.2rem;">${b.status}</span>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn-sm btn-verify" onclick="alert('Boarding pass verified for Seat ${b.seatNumber}')"><i class="fa-solid fa-check"></i> Verify</button>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    title.innerText = 'Manifest';
+                    count.innerText = '0 Souls on Board';
+                    controls.style.display = 'none';
+                    list.innerHTML = `
+                        <div style="text-align: center; color: var(--text-muted); padding: 5rem 0;">
+                            <i class="fa-solid fa-plane-slash" style="font-size: 4rem; margin-bottom: 1.5rem; opacity: 0.3; color: var(--danger);"></i>
+                            <p style="letter-spacing: 1px; font-size: 0.9rem; text-transform: uppercase;">No reservations found for ${flightNumStr}.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                alert("Error loading manifest.");
+                list.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>

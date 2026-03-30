@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boarding Pass / SSS Airlines</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        .container {
+            padding: 120px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .ticket-wrapper {
+            position: relative;
+            perspective: 1200px;
+        }
+
+        .boarding-pass {
+            width: 850px;
+            height: 320px;
+            background: linear-gradient(135deg, rgba(26,5,13,0.95) 0%, rgba(92,15,43,0.9) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(212,175,55,0.1);
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boarding-pass::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 6px;
+            background: linear-gradient(90deg, #b8860b, var(--secondary), #f2e3c6);
+        }
+
+        .main-ticket {
+            flex: 3;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 2px dashed rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .main-ticket::after, .main-ticket::before {
+            content: '';
+            position: absolute;
+            width: 40px; height: 40px;
+            background: #1a050d;
+            border-radius: 50%;
+            right: -21px;
+            z-index: 10;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+
+        .main-ticket::before { top: -20px; }
+        .main-ticket::after { bottom: -20px; }
+
+        .stub {
+            flex: 1;
+            padding: 2.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .flight-cities {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .city-box { text-align: center; }
+
+        .city-code {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .flight-path {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 2rem;
+            color: var(--accent);
+            font-size: 2rem;
+        }
+
+        .flight-path::before {
+            content: '';
+            position: absolute;
+            left: 20%; right: 20%;
+            height: 2px;
+            background: dashed 2px rgba(212, 175, 55, 0.4);
+            z-index: -1;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 8rem;
+            color: rgba(212,175,55,0.03);
+            font-family: 'Playfair Display', serif;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .qr-code {
+            width: 130px;
+            height: 130px;
+            background: white;
+            padding: 8px;
+            border-radius: 8px;
+            border: 2px solid var(--secondary);
+        }
+
+        @media (max-width: 900px) {
+            .boarding-pass {
+                flex-direction: column;
+                height: auto;
+                width: 100%;
+                max-width: 450px;
+            }
+            .main-ticket {
+                border-right: none;
+                border-bottom: 2px dashed rgba(212, 175, 55, 0.3);
+            }
+            .main-ticket::before, .main-ticket::after {
+                left: -20px; right: auto;
+            }
+            .main-ticket::before { bottom: -21px; top: auto; }
+            .details-grid { grid-template-columns: repeat(2, 1fr); }
+            .watermark { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="texture-overlay"></div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="logo">
+            <i class="fa-solid fa-crown" style="font-size: 1.5rem;"></i> SSS<span>Airlines</span>
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="ticket-wrapper">
+            <h1 style="text-align: center; margin-bottom: 2.5rem; color: var(--secondary); font-family: 'Playfair Display'; font-size: 3rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                <i class="fa-solid fa-star"></i> Journey Confirmed
+            </h1>
+
+            <div class="boarding-pass" id="boardingPass">
+                <div class="watermark">First Class</div>
+                <div class="main-ticket">
+                    <div class="header">
+                        <div class="logo" style="font-size: 1.5rem;">SSS<span>Airlines</span></div>
+                        <div style="font-weight: 600; letter-spacing: 3px; color: var(--accent); font-size: 0.9rem;">BOARDING PASS</div>
+                    </div>
+
+                    <div class="flight-cities">
+                        <div class="city-box">
+                            <div class="city-code" id="tkt-origin">---</div>
+                        </div>
+                        <div class="flight-path">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <div class="city-box">
+                            <div class="city-code" id="tkt-dest">---</div>
+                        </div>
+                    </div>
+
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Passenger</span>
+                            <span class="detail-value" id="tkt-passenger">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Flight</span>
+                            <span class="detail-value" id="tkt-flightnum">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value" id="tkt-date">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Time</span>
+                            <span class="detail-value" id="tkt-time">---</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Gate</span>
+                            <span class="detail-value">A${Math.floor(Math.random()*20)+1}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Cabin</span>
+                            <span class="detail-value" id="tkt-class" style="color: var(--secondary);">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Seat</span>
+                            <span class="detail-value" style="color: var(--secondary); font-size: 1.8rem; font-family: 'Playfair Display';" id="tkt-seat">---</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stub">
+                    <div class="detail-item" style="text-align: center; margin-bottom: 1.5rem;">
+                        <span class="detail-label">Booking Ref</span>
+                        <span class="detail-value" id="tkt-pnr" style="font-family: monospace; font-size: 1.3rem;">------</span>
+                    </div>
+                    <img id="qrCode" class="qr-code" src="" alt="QR Code">
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="../index.html" class="btn-primary" style="padding: 1rem 3rem;"><i class="fa-solid fa-house"></i> Return Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logic setup -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ticketDataRaw = sessionStorage.getItem('ticketData');
+            if(!ticketDataRaw) {
+                alert("No ticket data found!");
+                window.location.href = '../index.html';
+                return;
+            }
+
+            const ticket = JSON.parse(ticketDataRaw);
+            const passengerStr = localStorage.getItem('passenger');
+            const passenger = passengerStr ? JSON.parse(passengerStr) : { phoneNumber: 'Guest' };
+
+            document.getElementById('tkt-origin').innerText = ticket.flight.route.origin;
+            document.getElementById('tkt-dest').innerText = ticket.flight.route.destination;
+            document.getElementById('tkt-passenger').innerText = passenger.phoneNumber;
+            document.getElementById('tkt-flightnum').innerText = ticket.flight.flightNumber;
+            
+            const deptDate = new Date(ticket.flight.departureTime);
+            document.getElementById('tkt-date').innerText = deptDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+            document.getElementById('tkt-time').innerText = deptDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            document.getElementById('tkt-class').innerText = ticket.class;
+            document.getElementById('tkt-seat').innerText = ticket.seatNumber;
+            document.getElementById('tkt-pnr').innerText = ticket.bookingId;
+            document.getElementById('qrCode').src = ticket.qrCode;
+
+            const watermark = document.querySelector('.watermark');
+            if(ticket.class === 'Economy') watermark.innerText = 'Economy';
+            else if(ticket.class === 'Premium Economy') watermark.innerText = 'Premium';
+            else watermark.innerText = 'First Class';
+
+            // Premium 3D Tilt Animation for Boarding Pass
+            const pass = document.getElementById('boardingPass');
+            
+            gsap.from(pass, {
+                y: 100, opacity: 0, rotationX: -30,
+                duration: 2, ease: "power4.out"
+            });
+
+            pass.addEventListener('mousemove', (e) => {
+                const rect = pass.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width/2;
+                const y = e.clientY - rect.top - rect.height/2;
+
+                gsap.to(pass, {
+                    rotationY: x * 0.05, rotationX: -y * 0.05,
+                    transformPerspective: 1200, ease: "power1.out", duration: 0.5
+                });
+            });
+
+            pass.addEventListener('mouseleave', () => {
+                gsap.to(pass, { rotationY: 0, rotationX: 0, ease: "power3.out", duration: 1 });
+            });
+
+            sessionStorage.removeItem('selectedFlight');
+            sessionStorage.removeItem('selectedPrice');
+            sessionStorage.removeItem('selectedClass');
+        });
+    </script>
+</body>
+</html>

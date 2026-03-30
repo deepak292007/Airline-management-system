@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSS Airlines - Premium Experience</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Particles.js for premium background effect -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+
+    <div class="background-container">
+        <div id="particles-js"></div>
+        <div class="texture-overlay"></div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-crown" style="font-size: 1.5rem;"></i>
+            SSS<span>Airlines</span>
+        </a>
+        <div class="nav-links">
+            <a href="pages/login.html" id="loginBtn">Privilege Club</a>
+            <a href="pages/staff-panel.html">Operations</a>
+            <a href="pages/admin-dashboard.html" class="btn-primary">Admin Access</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1 class="hero-title gsap-reveal">Discover <span>the Art</span> of Flying</h1>
+        <p class="hero-subtitle gsap-reveal">Indulge in unparalleled luxury and dynamic pricing for the modern traveler.</p>
+        
+        <div class="search-container glass-panel gsap-scale">
+            <form id="flightSearchForm">
+                <div class="search-grid">
+                    <div class="input-group">
+                        <label>Origin</label>
+                        <select id="origin">
+                            <option value="HYD">Hyderabad (HYD)</option>
+                            <option value="DEL">New Delhi (DEL)</option>
+                            <option value="BLR">Bangalore (BLR)</option>
+                            <option value="MUM">Mumbai (MUM)</option>
+                            <option value="VIJ">Vijayawada (VIJ)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Destination</label>
+                        <select id="destination">
+                            <option value="DEL">New Delhi (DEL)</option>
+                            <option value="HYD">Hyderabad (HYD)</option>
+                            <option value="BLR">Bangalore (BLR)</option>
+                            <option value="MUM">Mumbai (MUM)</option>
+                            <option value="DXB">Dubai (DXB)</option>
+                            <option value="SIN">Singapore (SIN)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Departure</label>
+                        <input type="date" id="departureDate" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Return</label>
+                        <input type="date" id="returnDate">
+                    </div>
+                    <div class="input-group">
+                        <label>Guests</label>
+                        <select id="passengers">
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Cabin</label>
+                        <select id="cabinClass">
+                            <option value="Economy">Economy</option>
+                            <option value="Premium Economy">Premium Economy</option>
+                            <option value="Business">First & Business</option>
+                        </select>
+                    </div>
+                    <div class="input-group" style="display: none;" id="flightNumberGroup">
+                        <label>Flight No.</label>
+                        <input type="text" id="flightNumber" readonly>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn-primary" style="padding: 1rem 4rem; font-size: 1.1rem; margin-top: 1rem;">
+                        Search Flights
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div class="results-container" id="resultsContainer">
+        <!-- Flight results injected here by JS -->
+    </div>
+
+    <!-- Available Flights Section -->
+    <section class="available-flights">
+        <h2 class="section-title gsap-reveal" style="text-align: center; margin-bottom: 2rem; color: var(--gold); font-size: 2.5rem; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">Available Flights Today</h2>
+        <div id="availableFlightsGrid" class="flights-grid gsap-reveal">
+            <!-- Flight cards will be injected here automatically by app.js -->
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Init Particles JS with a subtle gold dust effect
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#d4af37" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1, "direction": "top", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": false }, "resize": true },
+                "modes": { "bubble": { "distance": 200, "size": 6, "duration": 2, "opacity": 0.8, "speed": 3 } }
+            },
+            "retina_detect": true
+        });
+
+        // Set min date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('departureDate').min = today;
+        document.getElementById('departureDate').value = today;
+
+        // Enhanced GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        const tl = gsap.timeline();
+        
+        tl.from("nav", { y: -100, opacity: 0, duration: 1, ease: "power4.out" })
+          .from(".gsap-reveal", { y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out" }, "-=0.5")
+          .from(".gsap-scale", { scale: 0.9, opacity: 0, duration: 1, ease: "back.out(1.2)" }, "-=0.5");
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                document.querySelector('nav').classList.add('scrolled');
+            } else {
+                document.querySelector('nav').classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
